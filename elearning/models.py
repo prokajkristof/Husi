@@ -19,8 +19,6 @@ class Student(models.Model):
     registration_date = models.DateField()
     num_of_courses_enrolled = models.IntegerField()
     num_of_courses_completed = models.IntegerField()
-    average_review_rating = models.FloatField()
-    num_of_reviews = models.IntegerField()
 
 
 class Course(models.Model):
@@ -28,3 +26,16 @@ class Course(models.Model):
     course_brief = models.CharField(max_length=4000)
     instructor_id = models.ForeignKey(Instructor, on_delete=models.CASCADE)
     num_of_chapters = models.IntegerField()
+
+
+class CourseChapter(models.Model):
+    course_id = models.ForeignKey(Course, on_delete=models.CASCADE)
+    chapter_title = models.CharField(max_length=100)
+
+
+class Enrollment(models.Model):
+    student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
+    course_id = models.ForeignKey(Course, on_delete=models.CASCADE)
+    enrollment_date = models.DateField()
+
+
