@@ -39,3 +39,24 @@ class Enrollment(models.Model):
     enrollment_date = models.DateField()
 
 
+class ContentType(models.Model):
+    content_type = models.CharField(max_length=20)
+
+
+class CourseChapterContent(models.Model):
+    course_chapter_id = models.ForeignKey(CourseChapter, on_delete=models.CASCADE)
+    content_type_id = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+
+
+class LearningProgress(models.Model):
+    enrollment_id = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
+    course_chapter_content_id = models.ForeignKey(CourseChapterContent, on_delete=models.CASCADE)
+    status = models.CharField(max_length=1)
+
+
+class Feedback(models.Model):
+    enrollment_id = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
+    rating_score = models.IntegerField()
+    feedback_text = models.CharField(max_length=4000)
+    submission_date = models.DateField()
+
