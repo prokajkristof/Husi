@@ -21,3 +21,10 @@ class Student(models.Model):
     num_of_courses_completed = models.IntegerField()
     average_review_rating = models.FloatField()
     num_of_reviews = models.IntegerField()
+
+
+class Course(models.Model):
+    course_title = models.CharField(max_length=200)
+    course_brief = models.CharField(max_length=4000)
+    instructor_id = models.ForeignKey(Instructor, on_delete=models.CASCADE)
+    num_of_chapters = models.IntegerField()
