@@ -15,6 +15,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_DIR = Path(BASE_DIR) / "static"
+TEMPLATES_DIR = Path(BASE_DIR) / "templates"
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -68,7 +70,7 @@ ROOT_URLCONF = 'Django_elearning.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
