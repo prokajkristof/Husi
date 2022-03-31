@@ -19,8 +19,7 @@
 
 
 {% for course in object_list %}
-    {{ course.course_title }} <br>
-    {{ course.course_brief }} <br>
+    <a href="{% url 'course-detail' course.id %}"><h1>{{ course.course_title }} <br></h1></a>
 {% endfor %}
 
 
