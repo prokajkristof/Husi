@@ -12,15 +12,18 @@
   href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
   rel="stylesheet"  type='text/css'>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/course.css' %}">
     <title>Elearning</title>
     {% include "elearning/header.html" %}
 </head>
 <body>
 
-
+<div class="center">
 {% for course in object_list %}
     <a href="{% url 'course-detail' course.id %}"><h1>{{ course.course_title }} <br></h1></a>
 {% endfor %}
+
+</div>
 
 
 </body>
