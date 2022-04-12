@@ -13,16 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
-from elearning.views import CourseListView, CourseDetailView
-from elearning import views
 
 urlpatterns = [
     path('', include('elearning.urls')),
-    path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
-    path('course_list/', CourseListView.as_view(), name='course-list'),
-    path('course_list/<int:id>/', CourseDetailView.as_view(), name='course-detail'),
 ]
