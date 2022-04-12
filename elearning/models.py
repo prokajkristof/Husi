@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 
 class Instructor(models.Model):
     first_name = models.CharField(max_length=50)
@@ -26,6 +26,9 @@ class Course(models.Model):
     course_brief = models.CharField(max_length=4000)
     instructor_id = models.ForeignKey(Instructor, on_delete=models.CASCADE)
     num_of_chapters = models.IntegerField()
+
+    def get_absolute_url(self):
+        return reverse('course-list')
 
 
 class CourseChapter(models.Model):

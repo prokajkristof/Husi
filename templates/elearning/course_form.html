@@ -18,12 +18,11 @@
 </head>
 <body>
 
-<div class="center">
-{% for course in object_list %}
-    <a href="{% url 'course-detail' course.id %}"><h1>{{ course.course_title }} <br></h1></a>
-{% endfor %}
-<a class="btn btn-primary" href="/course_list/create/" role="button">Kurzus felvétele</a>
-</div>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button href="/course_list/" class="btn btn-primary" type="submit">Hozzáadás</button><a class="btn btn-primary" href="/course_list/" role="button">Vissza</a>
+</form>
 
 
 </body>
+
