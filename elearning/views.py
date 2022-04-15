@@ -12,6 +12,17 @@ from django.urls import reverse
 from django.views.generic.edit import CreateView
 
 
+class CourseUpdateView(UpdateView):
+    template_name_suffix = '_update_form'
+    model = Course
+    fields = [
+        'course_title',
+        'course_brief',
+        'instructor_id',
+        'num_of_chapters'
+    ]
+
+
 def delete(request, id):
   course = Course.objects.get(id=id)
   course.delete()
