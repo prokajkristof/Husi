@@ -6,9 +6,12 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib import messages
 
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 from .forms import CreateUserForm
 
+@login_required(login_url='login')
 def index(request):
     return render(request, 'elearning/index.html')
 
@@ -26,18 +29,20 @@ def registerPage(request):
     return render(request, 'accounts/register.html', context)
 
 def loginPage(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+    else:
+         if request.method =='POST':
+                username=request.POST.get('username')
+                password=request.POST.get('password')
 
-    if request.method =='POST':
-        username=request.POST.get('username')
-        password=request.POST.get('password')
+                user = authenticate(request, username=username, password=password)
 
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            return redirect('index')
-        else:
-            messages.info(request, 'Hibás felhasználónév vagy jelszó!')
+                if user is not None:
+                    login(request, user)
+                    return redirect('index')
+                else:
+                    messages.info(request, 'Hibás felhasználónév vagy jelszó!')
 
     context = {}
     return render(request, 'accounts/login.html', context)
