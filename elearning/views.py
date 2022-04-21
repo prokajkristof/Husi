@@ -18,7 +18,7 @@ def registerPage(request):
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
-            messages.succes(request, 'Felhasználó sikeresen létrehozva (' + user + ')')
+            messages.success(request, 'Felhasználó sikeresen létrehozva (' + user + ')')
             return redirect('login')
     context = {'form':form}
     return render(request, 'accounts/register.html', context)
