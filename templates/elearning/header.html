@@ -1,3 +1,11 @@
+<style>
+    .hello-msg{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+    }
+
+</style>
 
 <nav>
     <div class="logo">
@@ -8,7 +16,7 @@
         <li> <a href="#">Kurzusok</a></li>
         <li> <a href="#">Tanárok</a></li>
         <li> <a href="#">Tanulók</a></li>
-        <li> <a href="#">Bejelentkezés</a></li>
+        <li> <a href="login">Bejelentkezés</a></li>
 
     </ul>
 
@@ -17,4 +25,7 @@
         <div class="line2"></div>
         <div class="line3"></div>
     </div>
+
+    <span class="hello-msg">Üdvözlünk, {{request.user}}!</span>
+    <span><a class="hello-msg" href="logout">Kijelentkezés</a></span>
 </nav>
