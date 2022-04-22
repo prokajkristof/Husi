@@ -24,6 +24,7 @@ from .forms import CreateUserForm
 def index(request):
     return render(request, 'elearning/index.html')
 
+
 def registerPage(request):
     form = CreateUserForm()
 
@@ -36,6 +37,7 @@ def registerPage(request):
             return redirect('login')
     context = {'form':form}
     return render(request, 'accounts/register.html', context)
+
 
 def loginPage(request):
     if request.user.is_authenticated:
@@ -55,6 +57,7 @@ def loginPage(request):
 
     context = {}
     return render(request, 'accounts/login.html', context)
+
 
 def logoutUser(request):
     logout(request)
@@ -103,7 +106,3 @@ class CourseDetailView(DetailView):
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Course, id=id_)
-
-
-def index(request):
-    return render(request, 'elearning/index.html')
