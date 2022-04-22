@@ -1,15 +1,5 @@
 <!DOCTYPE html>
 {% load static %}
-<style>
-		body,
-		html {
-			margin: 0;
-			padding: 0;
-			height: 100%;
-			background: #458059 !important;
-		}
-</style>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,9 +13,17 @@
   rel="stylesheet"  type='text/css'>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <title>Elearning</title>
+    {% include "elearning/header.html" %}
 </head>
 <body>
-{% include "elearning/header.html" %}
-    <script src="static/js/app.js"></script>
+
+{% block content %}
+<h1>{{ object.course_title }} </h1>
+<p> {{ object.course_brief }} </p>
+<a class="btn btn-primary" href="/course_list/" role="button">Vissza</a>
+<a href="delete/{{ x.id }}">delete</a>
+
+<a href="update/{{ x.id }}">Szerkesztés</a>
+{% endblock %}
+
 </body>
-</html>

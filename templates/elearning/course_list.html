@@ -1,15 +1,5 @@
 <!DOCTYPE html>
 {% load static %}
-<style>
-		body,
-		html {
-			margin: 0;
-			padding: 0;
-			height: 100%;
-			background: #458059 !important;
-		}
-</style>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,10 +12,18 @@
   href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
   rel="stylesheet"  type='text/css'>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/course.css' %}">
     <title>Elearning</title>
+    {% include "elearning/header.html" %}
 </head>
 <body>
-{% include "elearning/header.html" %}
-    <script src="static/js/app.js"></script>
+
+<div class="center">
+{% for course in object_list %}
+    <a href="{% url 'course-detail' course.id %}"><h1>{{ course.course_title }} <br></h1></a>
+{% endfor %}
+<a class="btn btn-primary" href="/course_list/create/" role="button">Kurzus felvétele</a>
+</div>
+
+
 </body>
-</html>

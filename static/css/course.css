@@ -1,0 +1,18 @@
+.center{
+    text-items: center;
+    margin-left: 600px;
+}
+
+.center h1{
+    border: 1px solid black;
+    width: 50%;
+    text-align: center;
+}
+.center a{
+    text-decoration: none;
+    color: black;
+}
+
+.center a:hover{
+    opacity: 50%;
+}
