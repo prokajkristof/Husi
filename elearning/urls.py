@@ -12,7 +12,6 @@ urlpatterns = [
 
 
     path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
     path('course_list/', CourseListView.as_view(), name='course-list'),
     path('course_list/<int:id>/', CourseDetailView.as_view(), name='course-detail'),
     path('course_list/create/', CourseCreateView.as_view(), name='course-create'),
