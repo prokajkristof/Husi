@@ -20,7 +20,7 @@ A rendszer egy Elearning weblap. A funkciók amiket meg kell valósítanunk azok
 
 ## 3. Üzleti folyamatok modellje
 
-![Üzleti modell](../Dokumentacio/Képek/Umodell.PNG)
+![datamodel](uzleti_modell.png)
 
 ## 4. Követelmények
 
@@ -160,7 +160,7 @@ class Feedback(models.Model):
 ```
 **UML**
 <br>
-![Adatbázis terv](../Dokumentacio/Képek/Adatbázis.PNG)
+![datamodel](eLearning_school-2022-03-05_15-51.png)
 
 ## 9. Implementációs terv
 
