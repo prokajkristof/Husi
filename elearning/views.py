@@ -9,8 +9,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Course
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
+from .models import Course, Instructor, Student
 from django.urls import reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -106,3 +106,11 @@ class CourseDetailView(DetailView):
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Course, id=id_)
+
+
+class ProfileView(TemplateView):
+    template_name = 'accounts/profile.html'
+
+    def get(self, *args, **kwargs):
+
+        return render(self.request, 'accounts/profile.html')
