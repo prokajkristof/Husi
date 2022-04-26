@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 from django.contrib.auth.decorators import login_required
 
@@ -116,3 +117,30 @@ class ProfileView(TemplateView):
     def get(self, *args, **kwargs):
 
         return render(self.request, 'accounts/profile.html')
+
+
+class InstructorView(ListView):
+
+    def get(self, *args, **kwargs):
+        inst_qs = Instructor.objects.filter(email=self.request.user.email)
+        if inst_qs.exists():
+            con_inst = Instructor.objects.all()
+            context = {
+                'instructors': con_inst
+            }
+            return render(self.request, 'elearning/instructor_list.html', context)
+        else:
+            instructor = Instructor(
+                first_name=self.request.user.username,
+                last_name=self.request.user.last_name,
+                email=self.request.user.email,
+                registration_date=self.request.user.date_joined
+            )
+            instructor.save()
+
+            con_inst = Instructor.objects.all()
+            context = {
+                'instructors': con_inst
+            }
+            return render(self.request, 'elearning/instructor_list.html', context)
+
