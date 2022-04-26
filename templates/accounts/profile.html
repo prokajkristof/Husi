@@ -16,7 +16,13 @@
 </head>
 <body>
     {% include "elearning/header.html" %}
-    <h1>Welcome to your profile, {{request.user.username}}</h1>
+    <h1>Üdvözöllek a profilodon, {{request.user.username}}</h1>
+    {% if request.user.first_name %}
+    <h2>Te egy tanár vagy</h2>
+    {% else %}
+    <h2>Te egy tanuló vagy</h2>
+    {% endif %}
+    <h3> Csatlakozás dátuma: {{ request.user.date_joined }}</h3>
 
 {% block content %}
     <div class="row my-3 p-3">
