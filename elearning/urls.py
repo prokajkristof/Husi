@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf.urls import include
 from elearning import views
-from elearning.views import CourseListView, CourseDetailView, CourseCreateView, CourseUpdateView, ProfileView, InstructorView
+from elearning.views import CourseListView, CourseDetailView, CourseCreateView, CourseUpdateView, ProfileView, InstructorView, StudentView
 from django.contrib import admin
 
 urlpatterns = [
@@ -11,6 +11,7 @@ urlpatterns = [
     path('logout/', views.logoutUser, name ="logout"),
     path('profile_s/', ProfileView.as_view(), name="ProfileView"),
     path('instructors/', InstructorView.as_view(), name="InstructorView"),
+    path('students/', StudentView.as_view(), name="StudentView"),
     path('admin/', admin.site.urls),
     path('course_list/', CourseListView.as_view(), name='course-list'),
     path('course_list/<int:id>/', CourseDetailView.as_view(), name='course-detail'),

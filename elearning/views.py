@@ -130,17 +130,56 @@ class InstructorView(ListView):
             }
             return render(self.request, 'elearning/instructor_list.html', context)
         else:
-            instructor = Instructor(
-                first_name=self.request.user.username,
-                last_name=self.request.user.last_name,
-                email=self.request.user.email,
-                registration_date=self.request.user.date_joined
-            )
-            instructor.save()
+            if self.request.user.first_name == "instructor":
+                instructor = Instructor(
+                    first_name=self.request.user.username,
+                    last_name=self.request.user.last_name,
+                    email=self.request.user.email,
+                    registration_date=self.request.user.date_joined
+                )
+                instructor.save()
 
-            con_inst = Instructor.objects.all()
+                con_inst = Instructor.objects.all()
+                context = {
+                    'instructors': con_inst
+                }
+                return render(self.request, 'elearning/instructor_list.html', context)
+            else:
+                con_inst = Instructor.objects.all()
+                context = {
+                    'instructors': con_inst
+                }
+                return render(self.request, 'elearning/instructor_list.html', context)
+
+
+class StudentView(ListView):
+
+    def get(self, *args, **kwargs):
+        inst_qs = Student.objects.filter(email=self.request.user.email)
+        if inst_qs.exists():
+            con_inst = Student.objects.all()
             context = {
-                'instructors': con_inst
+                'student': con_inst
             }
-            return render(self.request, 'elearning/instructor_list.html', context)
+            return render(self.request, 'elearning/student_list.html', context)
+        else:
+            if self.request.user.first_name == "instructor":
+                con_inst = Student.objects.all()
+                context = {
+                    'student': con_inst
+                }
+                return render(self.request, 'elearning/student_list.html', context)
+            else:
+                student = Student(
+                    first_name=self.request.user.username,
+                    last_name=self.request.user.last_name,
+                    email=self.request.user.email,
+                    registration_date=self.request.user.date_joined
+                )
+                student.save()
 
+                con_inst = Student.objects.all()
+                context = {
+                    'student': con_inst
+                }
+                return render(self.request, 'elearning/student_list.html', context)
