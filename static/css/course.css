@@ -1,16 +1,31 @@
+.form{
+    margin-left: 50px;
+    margin-top: 25px;
+    color: rgb(221, 221, 221);
+}
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #458059 !important;
+    color: rgb(221, 221, 221);
+
+}
+
 .center{
+    margin-top: 25px;
     text-items: center;
     margin-left: 600px;
 }
 
 .center h1{
-    border: 1px solid black;
+    border: 1px solid white;
     width: 50%;
     text-align: center;
 }
 .center a{
     text-decoration: none;
-    color: black;
+    color: rgb(221, 221, 221);
 }
 
 .center a:hover{

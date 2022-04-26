@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap" rel="stylesheet">
     <link
   href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
@@ -22,7 +23,7 @@
 {% for course in object_list %}
     <a href="{% url 'course-detail' course.id %}"><h1>{{ course.course_title }} <br></h1></a>
 {% endfor %}
-<a class="btn btn-primary" href="/course_list/create/" role="button">Kurzus felvétele</a>
+<a class="btn btn-success" href="/course_list/create/" role="button">Kurzus felvétele</a>
 </div>
 
 
