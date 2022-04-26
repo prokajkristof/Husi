@@ -73,8 +73,6 @@ class CourseUpdateView(UpdateView):
     fields = [
         'course_title',
         'course_brief',
-        'instructor_id',
-        'num_of_chapters'
     ]
 
 
@@ -89,9 +87,13 @@ class CourseCreateView(CreateView):
     fields = [
         'course_title',
         'course_brief',
-        'instructor_id',
-        'num_of_chapters'
     ]
+
+    def form_valid(self, form):
+        course = form.save(commit=False)
+        course.instructor_id = self.request.user.id
+        course.num_of_chapters = 0
+        return super(CourseCreateView, self).form_valid(form)
 
 
 class CourseListView(ListView):
