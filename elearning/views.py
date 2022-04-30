@@ -183,3 +183,9 @@ class StudentView(ListView):
                     'student': con_inst
                 }
                 return render(self.request, 'elearning/student_list.html', context)
+
+class ModView(TemplateView):
+
+    def get(self, *args, **kwargs):
+
+        return render(self.request, 'accounts/mod_form.html')
