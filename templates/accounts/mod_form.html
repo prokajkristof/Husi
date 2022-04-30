@@ -17,13 +17,38 @@
 <body>
     {% include "elearning/header.html" %}
 <h1>Felhasználónév módosítása</h1>
-<form>
+<form name="form">
     <p>Új felhasználónév:</p>
     <input type="text" name="username" placeholder="Új felhasználónév" required>
     <p>Jelszó:</p>
     <input type="password" name="password" required>
     <p>Jelszó megadása kötelező</p>
-    <input type="submit" value="Felfasználónév megváltoztatása" onclick="">
+    <input type="submit" value="Felfasználónév megváltoztatása" onclick="save_name(form.name)">
 </form>
+<script>
+    function save_name(form)
+    {
+        if(form.username.isEmptyObject())
+        {
+            alert("Username cannot be empty");
+        }
+        else if(form.password.isEmptyObject())
+        {
+            alert("Password is required");
+        }
+        else if(form.username.match("{{request.user.username}}"))
+        {
+            alert("Username cannot be changed to the same as before");
+        }
+        else if(!form.password.match("{{request.user.password}}"))
+        {
+            alert("Incorrect password");
+        }
+        else
+        {
+
+        }
+    }
+</script>
 </body>
 </html>
