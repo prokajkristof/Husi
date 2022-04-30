@@ -28,15 +28,7 @@
 <script>
     function save_name(form)
     {
-        if(form.username.isEmptyObject())
-        {
-            alert("Username cannot be empty");
-        }
-        else if(form.password.isEmptyObject())
-        {
-            alert("Password is required");
-        }
-        else if(form.username.match("{{request.user.username}}"))
+        if(form.username.match("{{request.user.username}}"))
         {
             alert("Username cannot be changed to the same as before");
         }
