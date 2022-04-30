@@ -17,28 +17,32 @@
 <body>
     {% include "elearning/header.html" %}
 <h1>Felhasználónév módosítása</h1>
-<form name="form">
+<form method="POST" action="">
+    {% csrf_token %}
     <p>Új felhasználónév:</p>
     <input type="text" name="username" placeholder="Új felhasználónév" required>
+    {{ form.username }}
     <p>Jelszó:</p>
     <input type="password" name="password" required>
+    {{ form.password }}
     <p>Jelszó megadása kötelező</p>
-    <input type="submit" value="Felfasználónév megváltoztatása" onclick="save_name(form.name)">
+    <button onclick="save_name(request.user)">Felfasználónév megváltoztatása</button>
 </form>
 <script>
-    function save_name(form)
+    var form_fields = document.getElementsByTagName('form')
+    function save_name(user)
     {
-        if(form.username.match("{{request.user.username}}"))
+        if(form_fields[1].match(user.username))
         {
             alert("Username cannot be changed to the same as before");
         }
-        else if(!form.password.match("{{request.user.password}}"))
+        else if(!form_fields[2].match(user.password))
         {
             alert("Incorrect password");
         }
         else
         {
-
+            //save new username
         }
     }
 </script>
