@@ -17,7 +17,7 @@
 <body>
     {% include "elearning/header.html" %}
 <h1>Felhasználónév módosítása</h1>
-<form method="POST" action="" onsubmit="save_name(request.user)">
+<form method="POST" action="" onsubmit="save_name()">
     {% csrf_token %}
     <p>Új felhasználónév:</p>
     <input type="text" name="username" placeholder="Új felhasználónév" required>
@@ -28,7 +28,8 @@
 </form>
 <script>
     var form_fields = document.getElementsByTagName('form')
-    function save_name(user)
+    var user = {{ request.user }};
+    function save_name()
     {
         if(form_fields[1].match(user.username))
         {
