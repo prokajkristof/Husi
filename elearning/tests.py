@@ -1,5 +1,6 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 import datetime
+from django.urls import reverse, resolve
 
 from elearning.models import Course, Instructor, Student
 
@@ -47,3 +48,16 @@ class CourseTest(TestCase):
 
         record = Course.objects.get(id=1)
         self.assertEqual(record, course)
+
+    def test_get_absolute_url(self):
+        course = Course()
+        course.course_title = "Test Title"
+        course.course_brief = "Test Brief"
+        course.instructor_id = 1
+        course.num_of_chapters = 1
+        course.save()
+        course = Course.objects.get(id=1)
+        # This will also fail if the urlconf is not defined.
+        self.assertEqual(course.get_absolute_url(), '/course_list/')
+
+
