@@ -12,10 +12,6 @@ class InstructorTest(TestCase):
         instructor.last_name = "Test Last"
         instructor.email = "Test Email"
         instructor.registration_date = datetime.datetime.now()
-        instructor.num_of_published_courses = 1
-        instructor.num_of_enrolled_students = 1
-        instructor.average_review_rating = 3
-        instructor.num_of_reviews = 1
         instructor.save()
 
         record = Instructor.objects.get(id=1)
@@ -29,8 +25,6 @@ class StudentTest(TestCase):
         student.last_name = "Test Last"
         student.email = "Test Email"
         student.registration_date = datetime.datetime.now()
-        student.num_of_courses_enrolled = 1
-        student.num_of_courses_completed = 1
         student.save()
 
         record = Student.objects.get(id=1)
