@@ -34,3 +34,16 @@ class StudentTest(TestCase):
 
         record = Student.objects.get(id=1)
         self.assertEqual(record, student)
+
+
+class CourseTest(TestCase):
+    def test_fields(self):
+        course = Course()
+        course.course_title = "Test Title"
+        course.course_brief = "Test Brief"
+        course.instructor_id = 1
+        course.num_of_chapters = 1
+        course.save()
+
+        record = Course.objects.get(id=1)
+        self.assertEqual(record, course)
