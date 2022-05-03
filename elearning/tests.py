@@ -21,3 +21,16 @@ class InstructorTest(TestCase):
         self.assertEqual(record, instructor)
 
 
+class StudentTest(TestCase):
+    def test_fields(self):
+        student = Student()
+        student.first_name = "Test First"
+        student.last_name = "Test Last"
+        student.email = "Test Email"
+        student.registration_date = datetime.datetime.now()
+        student.num_of_courses_enrolled = 1
+        student.num_of_courses_completed = 1
+        student.save()
+
+        record = Student.objects.get(id=1)
+        self.assertEqual(record, student)
