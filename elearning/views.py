@@ -189,3 +189,7 @@ class ModView(TemplateView):
     def get(self, *args, **kwargs):
 
         return render(self.request, 'accounts/mod_form.html')
+
+class PasswordModView(TemplateView):
+    def get(self, *args, **kwargs):
+        return render(self.request, 'accounts/password_mod_form.html')
