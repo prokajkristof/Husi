@@ -1,7 +1,8 @@
 from django.urls import path
 from django.conf.urls import include
 from elearning import views
-from elearning.views import ModView, CourseListView, CourseDetailView, CourseCreateView, CourseUpdateView, ProfileView, InstructorView, StudentView
+from elearning.views import ModView, CourseListView, CourseDetailView, CourseCreateView, CourseUpdateView, ProfileView, \
+    InstructorView, StudentView, PasswordModView
 from django.contrib import admin
 
 urlpatterns = [
@@ -19,5 +20,6 @@ urlpatterns = [
     path('course_list/<int:id>/delete/', views.delete, name='delete'),
     path('course_list/<pk>/update/', CourseUpdateView.as_view(), name='update'),
     path('mod_form/', ModView.as_view(), name="mod_form"),
+    path('password_mod_form/', PasswordModView.as_view(), name="password_mod_form")
 
 ]
