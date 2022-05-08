@@ -14,6 +14,9 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Course, Instructor, Student
 from django.urls import reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.forms import PasswordChangeForm
+from .forms import PasswordChangingForm
 
 
 from django.urls import reverse
@@ -183,3 +186,13 @@ class StudentView(ListView):
                     'student': con_inst
                 }
                 return render(self.request, 'elearning/student_list.html', context)
+
+
+class PasswordChangeView(PasswordChangeView):
+    form_class = PasswordChangingForm
+    #from_class = PasswordChangeForm
+    success_url = reverse_lazy('password_success')
+
+
+def password_success(request):
+    return render(request, 'accounts/password_success.html', {})

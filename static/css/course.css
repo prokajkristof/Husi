@@ -14,13 +14,10 @@ body {
 
 .center{
     margin-top: 25px;
-    text-items: center;
-    margin-left: 600px;
+    text-align: center;
 }
 
 .center h1{
-    border: 1px solid white;
-    width: 50%;
     text-align: center;
 }
 .center a{
