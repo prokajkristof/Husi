@@ -188,12 +188,6 @@ class StudentView(ListView):
                 return render(self.request, 'elearning/student_list.html', context)
 
 
-class ModView(TemplateView):
-    def get(self, *args, **kwargs):
-
-        return render(self.request, 'accounts/mod_form.html')
-
-
 class PasswordChangeView(PasswordChangeView):
     form_class = PasswordChangingForm
     #from_class = PasswordChangeForm
